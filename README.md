@@ -8,6 +8,6 @@
 
 **简单用法：**
 
-`npm install weixinjs`
+~~`npm install weixinjs`~~ //太多bug 暂时取消更新npm 
 
 见示例
