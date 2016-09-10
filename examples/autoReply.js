@@ -19,9 +19,9 @@ app.use('/wechat', wechat.auth())
 
 app.post('/wechat', function (req, res) {
 	wechat.watch('text', function (data) {
-		console.log(1)
 		res.reply({content: req.weixin.content})
 	})
+
 	wechat.handler(req.weixin)
 })
 
