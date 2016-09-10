@@ -1,7 +1,7 @@
 var express = require('express')
 var wechat = require('weixinjs')('12345')
-const bodyParser = require('body-parser');
-require('body-parser-xml')(bodyParser);
+const bodyParser = require('body-parser')
+require('body-parser-xml')(bodyParser)
 
 var app = express()
 
