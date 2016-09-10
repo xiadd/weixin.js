@@ -8,6 +8,6 @@
 
 **简单用法：**
 
-`npm install wechatjs`
+`npm install weixinjs`
 
 见示例
