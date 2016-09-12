@@ -4,7 +4,7 @@
   "description": "一个微信库而已",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
   "homepage": "https://github.com/xiadd/weixin.js#readme",
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "supertest": "^2.0.0"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
