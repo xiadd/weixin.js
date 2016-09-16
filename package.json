@@ -4,7 +4,7 @@
   "description": "一个微信库而已",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "istanbul cover node_modules/.bin/_mocha"
   },
   "repository": {
     "type": "git",
