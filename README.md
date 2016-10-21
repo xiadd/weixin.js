@@ -1,6 +1,7 @@
 # 一个node微信库
 
 ![](https://travis-ci.org/xiadd/weixin.js.svg?branch=master)
+![](https://david-dm.org/xiadd/weixin.js.svg)
 
 慢慢扩充状态
 
