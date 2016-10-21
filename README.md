@@ -2,6 +2,7 @@
 
 ![](https://travis-ci.org/xiadd/weixin.js.svg?branch=master)
 ![](https://david-dm.org/xiadd/weixin.js.svg)
+[![Github All Releases](https://img.shields.io/github/downloads/xiadd/weixin.js/total.svg)]()
 
 慢慢扩充状态
 
