@@ -10,16 +10,82 @@ let getReplyMessage = function (data, content) {
   let message
   switch (content.msgtype) {
     case 'text':
-      message = `<xml> <ToUserName><![CDATA[${data.fromusername}]]></ToUserName> <FromUserName><![CDATA[${data.tousername}]]></FromUserName> <CreateTime>${Date.now()}</CreateTime> <MsgType><![CDATA[text]]></MsgType> <Content><![CDATA[${content.content}]]></Content> </xml>`
+      message = '<xml>' +
+        '<ToUserName><![CDATA[' + data.fromusername + ']]></ToUserName>' +
+        '<FromUserName><![CDATA[' + data.tousername + ']]></FromUserName>' +
+        '<CreateTime>' + Date.now() + '</CreateTime>' +
+        '<MsgType><![CDATA[text]]></MsgType>' +
+        '<Content><![CDATA[' + content.content + ']]></Content>' +
+        '</xml>'
       break
     case 'image':
-      message = `<xml> <ToUserName><![CDATA[${data.fromusername}]]></ToUserName> <FromUserName><![CDATA[${data.ftousername}]]></FromUserName> <CreateTime>${Date.now()}</CreateTime> <MsgType><![CDATA[image]]></MsgType> <Image> <MediaId><![CDATA[${content.mediaid}]]></MediaId> </Image> </xml>`
+      message = '<xml>' +
+        `<ToUserName><![CDATA[${data.fromusername}]]></ToUserName>` +
+        `<FromUserName><![CDATA[${data.tousername}]]></FromUserName>` +
+        `<CreateTime>${Date.now()}</CreateTime>` +
+        '<MsgType><![CDATA[image]]></MsgType>' +
+        `<Image><MediaId><![CDATA[${content.mediaid}]]></MediaId></Image>` +
+        '</xml>'
       break
     case 'voice':
-      message = `<xml> <ToUserName><![CDATA[${data.fromusername}]]></ToUserName> <FromUserName><![CDATA[${data.ftousername}]]></FromUserName> <CreateTime>${Date.now()}</CreateTime> <MsgType><![CDATA[voice]]></MsgType> <Voice> <MediaId><![CDATA[${content.mediaid}]]></MediaId> </Voice> </xml>`
+      message = '<xml>' +
+        `<ToUserName><![CDATA[${data.fromusername}]]></ToUserName>` +
+        `<FromUserName><![CDATA[${data.tousername}]]></FromUserName>` +
+        `<CreateTime>${Date.now()}</CreateTime>` +
+        '<MsgType><![CDATA[voice]]></MsgType>' +
+        `<Voice> <MediaId><![CDATA[${content.mediaid}]]></MediaId> </Voice>` +
+        '</xml>'
       break
     case 'video':
-      message = `<xml> <ToUserName><![CDATA[${data.fromusername}]]></ToUserName> <FromUserName><![CDATA[${data.ftousername}]]></FromUserName> <CreateTime>${Date.now()}</CreateTime> <MsgType><![CDATA[video]]></MsgType> <Video> <MediaId><![CDATA[${content.mediaid}]]></MediaId> ${content.title ? `<Title><![CDATA[${content.title}]]></Title>` : ''} ${content.description ? `<Description><![CDATA[${content.description}]]></Description>` : ''} </Video> </xml>`
+      message = '<xml>' +
+        `<ToUserName><![CDATA[${data.fromusername}]]></ToUserName>` +
+        `<FromUserName><![CDATA[${data.tousername}]]></FromUserName>` +
+        `<CreateTime>${Date.now()}</CreateTime>` +
+        '<MsgType><![CDATA[video]]></MsgType>' +
+        '<Video>' +
+        `<MediaId><![CDATA[${content.mediaid}]]></MediaId>` +
+        `${content.title ? `<Title><![CDATA[${content.title}]]></Title>` : ''}` +
+        `${content.description ? `<Description><![CDATA[${content.description}]]></Description>` : ''}` +
+        '</Video>' +
+        '</xml>'
+      break
+    case 'music':
+      message = '<xml>' +
+        `<ToUserName><![CDATA[${data.fromusername}]]></ToUserName>` +
+        `<FromUserName><![CDATA[${data.tousername}]]></FromUserName>` +
+        `<CreateTime>${Date.now()}</CreateTime>` +
+        `<MsgType><![CDATA[music]]></MsgType>` +
+        '<Music>' +
+        `${content.title ? `<Title><![CDATA[${content.title}]]></Title>` : ''}` +
+        `${content.description ? `<Description><![CDATA[${content.description}]]></Description>` : ''}` +
+        `${content.music_url ? `<MusicURL><![CDATA[${content.music_url}]]></MusicURL>` : ''}` +
+        `${content.hq_music_url ? `<HQMusicUrl><![CDATA[${content.hq_music_url}]]></HQMusicUrl>` : ''}` +
+        `<ThumbMediaId><![CDATA[${content.mediaid}]]></ThumbMediaId>` +
+        '</Music>' +
+        '</xml>'
+      break
+    case 'news':
+      message = '<xml>' +
+        `<ToUserName><![CDATA[${data.fromusername}]]></ToUserName>` +
+        `<FromUserName><![CDATA[${data.tousername}]]></FromUserName>` +
+        `<CreateTime>${Date.now()}</CreateTime>` +
+        '<MsgType><![CDATA[news]]></MsgType>' +
+        `<ArticleCount>${content.count}</ArticleCount>` +
+        '<Articles>' +
+        '<item>' +
+        '<Title><![CDATA[title1]]></Title>' +
+        '<Description><![CDATA[description1]]></Description>' +
+        '<PicUrl><![CDATA[picurl]]></PicUrl>' +
+        '<Url><![CDATA[url]]></Url>' +
+        '</item>' +
+        '<item>' +
+        '<Title><![CDATA[title]]></Title>' +
+        '<Description><![CDATA[description]]></Description>' +
+        '<PicUrl><![CDATA[picurl]]></PicUrl>' +
+        '<Url><![CDATA[url]]></Url>' +
+        '</item>' +
+        '</Articles>' +
+        '</xml>'
       break
   }
   return message
