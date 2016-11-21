@@ -1,31 +1,20 @@
 var express = require('express')
-var expect = require('chai').expect
 var qs = require('querystring')
 var wechat = require('../')('12345')
-var bodyParser = require('body-parser');
-require('body-parser-xml')(bodyParser);
 
 var app = express()
 
-//解析xml
-app.use(bodyParser.xml({
-  limit: '1MB',
-  xmlParseOptions: {
-    normalize: true,
-    normalizeTags: true,
-    explicitArray: false
-  }
-}))
-
-app.use('/wechat', wechat.auth())
+app.use('/wechat', wechat)
 var request = require('supertest')(app)
 
 describe('微信接入', function() {
-  it('接入请求401', function (done) {
+  it('接入请求失败', function (done) {
     request
     .get('/wechat')
-    .expect(401)
-    .expect('Invalid Signature', done);
+    .expect(200, {
+      code: -1,
+      msg: 'invalid signatrue'
+    }, done)
   })
 
   it('接入请求200', function (done) {
@@ -39,6 +28,6 @@ describe('微信接入', function() {
     request
     .get('/wechat?' + qs.stringify(q))
     .expect(200)
-    .expect('test', done);
+    .expect('test', done)
   })
-});
+})
