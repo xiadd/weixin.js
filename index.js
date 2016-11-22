@@ -155,6 +155,11 @@ proto.watch = function (type, handle) {
     msgHandle = msgType
     msgType = 'all'
   }
+
+  if(this.messages && this.messages.length === 0) {
+    this.messages.push({ 'type': msgType, 'handle': msgHandle })
+    this.handle(this.req, this.res, this.next)
+  }
   if (this.messages.length !== 0) {
     for (let i = 0; i < this.messages.length; i++) {
       if (this.messages[i].type === msgType) {

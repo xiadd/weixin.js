@@ -1,8 +1,7 @@
-var express = require('express')
 var qs = require('querystring')
 var wechat = require('../')('12345')
 
-var app = express()
+var app = require('./common')
 
 app.use('/wechat', wechat)
 var request = require('supertest')(app)
@@ -17,7 +16,7 @@ describe('微信接入', function() {
     }, done)
   })
 
-  it('接入请求200', function (done) {
+  it('接入请求成功', function (done) {
     var q = {
       timestamp: new Date().getTime(),
       nonce: parseInt((Math.random() * 10e10), 10)
