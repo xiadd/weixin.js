@@ -1,14 +1,14 @@
-# 一个node微信库
+# 一个express微信消息中间件
 
 ![](https://travis-ci.org/xiadd/weixin.js.svg?branch=master)
 ![](https://david-dm.org/xiadd/weixin.js.svg)
 [![Github All Releases](https://img.shields.io/github/downloads/xiadd/weixin.js/total.svg)]()
 
-慢慢扩充状态
+相当简单的中间件。暂时没添加太多异常处理，测试覆盖也不完善。后续会解决。
 
-2016-9-9微信授权
+## 安装
 
-2016-9-10自动回复
+`npm install weixinjs`
 
 **简单用法：**
 
@@ -45,7 +45,3 @@ app.post('/wechat', function (req, res) {
 })
 app.listen(8080, () => console.log('server is running'))
 ```
-
-~~`npm install weixinjs`~~ //太多bug 暂时取消更新npm
-
-见示例
