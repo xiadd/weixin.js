@@ -59,3 +59,9 @@ app.post('/wechat', function (req, res) {
 })
 app.listen(8080, () => console.log('server is running'))
 ```
+
+## todo
+
+事件消息的回复
+
+关注取消关注事件等。
