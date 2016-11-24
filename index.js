@@ -202,6 +202,7 @@ proto.handle = function (req, res, next) {
     }
     //添加事件回复监控 常见有 关注、取消关注事件、扫描二维码事件、自定义菜单点击事件，关键词为req.messages中的event
     //subscribe， scan， location，click，view四种
+    //这里是链式调用，如果需要监听所有消息啧wechat(handle)即可。类似express的用法。
     if(type.toLowerCase() !== req.messages.msgtype.toLowerCase()) {
       if (req.messages.msgtype.toLowerCase() === 'event' && type.toLowerCase() === req.messages.event.toLowerCase()) {
         handle(req, res, next)
